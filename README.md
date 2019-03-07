@@ -1,1 +1,1 @@
-# teaching_materials
+# Various teaching materials
