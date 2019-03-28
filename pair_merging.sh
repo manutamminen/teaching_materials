@@ -17,4 +17,4 @@ reverse_read=$(echo $name | awk '{print $2}')
 out_name=$(echo $forward_read | awk -F'_' '{print $1 "_merged.fastq"}')
 
 # run the analysis command
-vsearch --threads 6 --fastq_mergepairs $forward_read --reverse $reverse_read --fastq_minovlen 200 --fastq_maxdiffs 15 --fastqout $out_name --fastq_eeout
+vsearch --threads 6 --fastq_mergepairs $forward_read --reverse $reverse_read --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout $out_name --fastq_eeout
