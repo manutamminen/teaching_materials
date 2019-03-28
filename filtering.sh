@@ -8,7 +8,7 @@
 #SBATCH -n 3
 
 # move to the directory where the data files are located
-cd /homeappl/home/matammi/teaching_materials
+cd ~/teaching_materials
 
 # set input file to be processed
 name=$(sed -n "$SLURM_ARRAY_TASK_ID"p merged.list)
