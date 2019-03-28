@@ -11,7 +11,7 @@
 cd /homeappl/home/matammi/teaching_materials
 
 # set input file to be processed
-name=$(sed -n "$SLURM_ARRAY_TASK_ID"p fastq_files.txt)
+name=$(sed -n "$SLURM_ARRAY_TASK_ID"p fastq_files.list)
 forward_read=$(echo $name | awk '{print $1}')
 reverse_read=$(echo $name | awk '{print $2}')
 out_name=$(echo $forward_read | awk -F'_' '{print $1 "_merged.fastq"}')
