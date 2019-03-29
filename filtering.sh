@@ -10,6 +10,9 @@
 # move to the directory where the data files are located
 cd ~/teaching_materials
 
+# load the vsearch tool
+module load vsearch
+
 # set input file to be processed
 name=$(sed -n "$SLURM_ARRAY_TASK_ID"p merged.list)
 out_name=$(echo $name | awk -F'_' '{print $1"_filtered.fastq"}')
