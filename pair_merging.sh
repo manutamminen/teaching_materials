@@ -13,7 +13,7 @@ cd ~/teaching_materials
 # load the vsearch tool
 module load vsearch
 
-# set input file to be processed
+# set input and output file names
 name=$(sed -n "$SLURM_ARRAY_TASK_ID"p fastq_files.list)
 forward_read=$(echo $name | awk '{print $1}')
 reverse_read=$(echo $name | awk '{print $2}')
