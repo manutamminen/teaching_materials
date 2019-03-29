@@ -15,7 +15,7 @@ module load vsearch
 
 # set input and output file names
 name=$(sed -n "$SLURM_ARRAY_TASK_ID"p merged.list)
-out_name=$(echo $name | awk -F'_' '{print $1"_filtered.fastq"}')
+out_name=$(echo $name | awk -F'_' '{print $1"_filtered.fasta"}')
 
 # run the analysis command
 vsearch --threads 6 --fastq_filter $name --fastq_maxee 1 --fastq_minlen 200 --fastq_maxlen 600 --fastq_maxns 0 --fastaout $out_name --fasta_width 0
