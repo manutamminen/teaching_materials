@@ -1,4 +1,7 @@
 
+* On Unix
+
+#+BEGIN_SRC sh
 vsearch --fastq_mergepairs example1_R1.fastq --reverse example1_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout example1_merged.fastq
 
 vsearch --fastq_filter example1_merged.fastq --fastq_maxee 1 --fastaout example1.fasta
@@ -25,3 +28,35 @@ wget http://drive5.com/sintax/rdp_16s_v16.fa.gz
 gunzip rdp_16s_v16.fa.gz
 
 vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.txt
+#+END_SRC
+
+
+* On R
+
+#+BEGIN_SRC R :session
+
+library(tidyverse)
+
+otu16 <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/otu16.csv")
+tax16 <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/tax16.csv")
+
+narrow_otu16 <- 
+  otu16 %>%
+  gather(Location, Freq, -OTU)
+
+narrow_otu16 %>%
+  ggplot(aes(x=Location, y=Freq, fill=OTU)) + 
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = -90))
+
+otu_tax16 <- 
+  left_join(narrow_otu16, tax16, by="OTU")
+
+otu_tax16 %>%
+  ggplot(aes(x=Location, y=Freq, fill=Class)) + 
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = -90))
+
+
+
+#+END_SRC
