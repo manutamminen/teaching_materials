@@ -1,0 +1,27 @@
+
+vsearch --fastq_mergepairs example1_R1.fastq --reverse example1_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout example1_merged.fastq
+
+vsearch --fastq_filter example1_merged.fastq --fastq_maxee 1 --fastaout example1.fasta
+
+vsearch --derep_fulllength example1.fasta --strand plus --output example1_derep.fasta --sizeout --relabel example1.
+
+
+
+vsearch --fastq_mergepairs example2_R1.fastq --reverse example2_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout example2_merged.fastq
+
+vsearch --fastq_filter example2_merged.fastq --fastq_maxee 1 --fastaout example2.fasta
+
+vsearch --derep_fulllength example2.fasta --strand plus --output example2_derep.fasta --sizeout --relabel example2.
+
+
+cat *derep.fasta > all.fasta
+
+
+vsearch --cluster_size all.fasta --id 0.97 --strand plus --relabel OTU_ --centroids all_otus.fasta --otutabout all_otutab.txt
+
+
+wget http://drive5.com/sintax/rdp_16s_v16.fa.gz
+
+gunzip rdp_16s_v16.fa.gz
+
+vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.txt

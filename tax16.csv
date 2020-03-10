@@ -1,0 +1,26 @@
+OTU,Kingdom,Phylum,Class,Order,Family,Genus,Species,V9,V10
+Otu3,k__Bacteria,p__Planctomycetes,c__Planctomycetia,o__Gemmatales,f__Gemmataceae,g__Gemmata,s__,1.00, 3
+Otu9,k__Bacteria,p__Planctomycetes,c__Planctomycetia,o__Pirellulales,f__Pirellulaceae,g__,s__,1.00, 3
+Otu14,k__Bacteria,p__Bacteroidetes,c__Cytophagia,o__Cytophagales,f__Cytophagaceae,g__Leadbetterella,s__,1.00, 3
+Otu17,k__Bacteria,p__Bacteroidetes,c__Flavobacteriia,o__Flavobacteriales,f__Flavobacteriaceae,g__Flavobacterium,s__,1.00, 3
+Otu60,k__Bacteria,p__Bacteroidetes,c__Flavobacteriia,o__Flavobacteriales,f__Flavobacteriaceae,g__Flavobacterium,s__,1.00, 3
+Otu11,k__Bacteria,p__Cyanobacteria,c__Chloroplast,o__Stramenopiles,f__,g__,s__,1.00, 3
+Otu8,k__Bacteria,p__Cyanobacteria,c__Chloroplast,o__Stramenopiles,f__,g__,s__,1.00, 3
+Otu21,k__Bacteria,p__Cyanobacteria,c__Chloroplast,o__Stramenopiles,f__,g__,s__,1.00, 3
+Otu10,k__Bacteria,p__Cyanobacteria,c__Chloroplast,o__Stramenopiles,f__,g__,s__,1.00, 3
+Otu1,k__Bacteria,p__Cyanobacteria,c__Chloroplast,o__Stramenopiles,f__,g__,s__,1.00, 3
+Otu31,k__Bacteria,p__Cyanobacteria,c__Chloroplast,o__Stramenopiles,f__,g__,s__,1.00, 3
+Otu16,k__Bacteria,p__Actinobacteria,c__Actinobacteria,o__Actinomycetales,f__Nocardiaceae,g__Rhodococcus,s__fascians,1.00, 3
+Otu4,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Sphingomonadales,f__Sphingomonadaceae,g__,s__,0.67, 3
+Otu12,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Sphingomonadales,f__,g__,s__,1.00, 3
+Otu2,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Sphingomonadales,f__,g__,s__,1.00, 3
+Otu7,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Rhodobacterales,f__Rhodobacteraceae,g__Rhodobacter,s__,1.00, 3
+Otu120,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Rhodobacterales,f__Rhodobacteraceae,g__Rhodobacter,s__,1.00, 3
+Otu109,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Rhodobacterales,f__Rhodobacteraceae,g__Rhodobacter,s__,1.00, 3
+Otu183,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Rhodobacterales,f__Rhodobacteraceae,g__Rhodobacter,s__,1.00, 3
+Otu5,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Rhodobacterales,f__Rhodobacteraceae,g__Rhodobacter,s__,1.00, 3
+Otu13,k__Bacteria,p__Proteobacteria,c__Alphaproteobacteria,o__Rhodobacterales,f__Rhodobacteraceae,g__Rhodobacter,s__,1.00, 3
+Otu184,k__Bacteria,p__Proteobacteria,c__Betaproteobacteria,o__Procabacteriales,f__Procabacteriaceae,g__,s__,1.00, 3
+Otu23,k__Bacteria,p__Proteobacteria,c__Betaproteobacteria,o__Burkholderiales,f__Comamonadaceae,g__Hydrogenophaga,s__,0.67, 3
+Otu64,k__Bacteria,p__Proteobacteria,c__Betaproteobacteria,o__Burkholderiales,f__Comamonadaceae,g__,s__,0.67, 3
+Otu234,k__Bacteria,p__Proteobacteria,c__Betaproteobacteria,o__Burkholderiales,f__Comamonadaceae,g__Leptothrix,s__,1.00, 3
