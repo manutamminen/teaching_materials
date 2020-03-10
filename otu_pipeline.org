@@ -10,7 +10,7 @@ git clone https://github.com/manutamminen/teaching_materials
 
 Then process the reads and call the OTUs
 
-Process example 1:
+Process example read set 1:
 
 #+BEGIN_SRC sh
 vsearch --fastq_mergepairs example1_R1.fastq --reverse example1_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout example1_merged.fastq
@@ -21,7 +21,7 @@ vsearch --derep_fulllength example1.fasta --strand plus --output example1_derep.
 #+END_SRC
 
 
-Process example 2:
+Process example read set 2:
 
 #+BEGIN_SRC sh
 vsearch --fastq_mergepairs example2_R1.fastq --reverse example2_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout example2_merged.fastq
@@ -71,22 +71,36 @@ grep -c ">" FILE.fasta
 
 ** On R
 
-#+BEGIN_SRC R :session
+Load tidyverse and import OTU data
 
+#+BEGIN_SRC R
 library(tidyverse)
 
 otu16 <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/otu16.csv")
 tax16 <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/tax16.csv")
+#+END_SRC
 
-narrow_otu16 <- 
-  otu16 %>%
-  gather(Location, Freq, -OTU)
+
+Prepare the OTUs for visualization
+
+#+BEGIN_SRC R :session
+narrow_otu16 <-
+    otu16 %>% 
+    pivot_longer(
+        cols = -"OTU",
+        names_to = "Location",
+        values_to = "Freq")
 
 narrow_otu16 %>%
   ggplot(aes(x=Location, y=Freq, fill=OTU)) + 
   geom_bar(stat="identity") +
   theme(axis.text.x = element_text(angle = -90))
+#+END_SRC
 
+
+Integrate taxonomic annotations to the visualization
+
+#+BEGIN_SRC R
 otu_tax16 <- 
   left_join(narrow_otu16, tax16, by="OTU")
 
@@ -94,7 +108,5 @@ otu_tax16 %>%
   ggplot(aes(x=Location, y=Freq, fill=Class)) + 
   geom_bar(stat="identity") +
   theme(axis.text.x = element_text(angle = -90))
-
-
-
 #+END_SRC
+
