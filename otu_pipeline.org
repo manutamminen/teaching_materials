@@ -1,5 +1,14 @@
+* OTU pipeline example
 
-* On Unix
+** On Unix
+
+First clone the teaching materials directory
+
+#+BEGIN_SRC sh
+git clone https://github.com/manutamminen/teaching_materials
+#+END_SRC
+
+Then process the reads and call the OTUs
 
 #+BEGIN_SRC sh
 vsearch --fastq_mergepairs example1_R1.fastq --reverse example1_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout example1_merged.fastq
@@ -30,7 +39,7 @@ gunzip rdp_16s_v16.fa.gz
 vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.txt
 #+END_SRC
 
-** Useful Unix tricks
+*** Useful Unix tricks
 
 Count the number of sequences in a fastq
 
@@ -44,7 +53,7 @@ Count the number of sequences in a fasta
 grep -c ">" FILE.fasta
 #+END_SRC
 
-* On R
+** On R
 
 #+BEGIN_SRC R :session
 
