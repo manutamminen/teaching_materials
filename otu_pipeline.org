@@ -30,7 +30,7 @@ gunzip rdp_16s_v16.fa.gz
 vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.txt
 #+END_SRC
 
-* Useful tricks
+** Useful Unix tricks
 
 Count the number of sequences in a fastq
 
