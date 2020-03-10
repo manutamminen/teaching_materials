@@ -44,6 +44,16 @@ vsearch --derep_fulllength example2.fasta --strand plus --output example2_derep.
 #+END_SRC
 
 
+Generalize this to any number of sequences:
+
+#+BEGIN_SRC sh
+ls example*_R1.fastq | awk -F'_' '{print $1}' | while read file; do vsearch --fastq_mergepairs ${file}_R1.fastq --reverse ${file}_R2.fastq --fastq_minovlen 50 --fastq_maxdiffs 15 --fastqout ${file}_merged.fastq; done
+
+ls example*_R1.fastq | awk -F'_' '{print $1}' | while read file; do vsearch --fastq_filter ${file}_merged.fastq --fastq_maxee 1 --fastaout ${file}.fasta; done
+
+ls example*_R1.fastq | awk -F'_' '{print $1}' | while read file; do vsearch --derep_fulllength ${file}.fasta --strand plus --output ${file}_derep.fasta --sizeout --relabel ${file}.; done
+#+END_SRC
+
 Combine the reads from the examples:
 
 #+BEGIN_SRC sh
