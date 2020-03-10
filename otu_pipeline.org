@@ -1,14 +1,26 @@
+# -*- org-export-babel-evaluate: nil -*-
+
+#+PROPERTY: header-args :eval never-export
+
 * OTU pipeline example
 
 ** On Unix
 
-First clone the teaching materials directory
+Clone the teaching materials directory
 
 #+BEGIN_SRC sh
 git clone https://github.com/manutamminen/teaching_materials
 #+END_SRC
 
-Then process the reads and call the OTUs
+
+Enable vsearch on the Unix cluster
+
+#+BEGIN_SRC sh
+module load vsearch
+#+END_SRC
+
+
+Process the reads and call the OTUs
 
 Process example read set 1:
 
@@ -30,6 +42,7 @@ vsearch --fastq_filter example2_merged.fastq --fastq_maxee 1 --fastaout example2
 
 vsearch --derep_fulllength example2.fasta --strand plus --output example2_derep.fasta --sizeout --relabel example2.
 #+END_SRC
+
 
 Combine the reads from the examples:
 
