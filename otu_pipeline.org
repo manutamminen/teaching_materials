@@ -89,37 +89,35 @@ Load tidyverse and import OTU data
 #+BEGIN_SRC R
 library(tidyverse)
 
-otu16 <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/otu16.csv")
-tax16 <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/tax16.csv")
+otu <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/otu16.csv")
+tax <- read_csv("https://raw.githubusercontent.com/manutamminen/teaching_materials/master/tax16.csv")
 #+END_SRC
 
 
 Prepare the OTUs for visualization
 
 #+BEGIN_SRC R :session
-narrow_otu16 <-
-    otu16 %>% 
+long_otu <-
     pivot_longer(
+        otu, 
         cols = -"OTU",
         names_to = "Location",
         values_to = "Freq")
 
-narrow_otu16 %>%
-  ggplot(aes(x=Location, y=Freq, fill=OTU)) + 
-  geom_bar(stat="identity") +
-  theme(axis.text.x = element_text(angle = -90))
+ggplot(long_otu, aes(x=Location, y=Freq, fill=OTU)) + 
+    geom_bar(stat="identity") +
+    theme(axis.text.x = element_text(angle = -90))
 #+END_SRC
 
 
 Integrate taxonomic annotations to the visualization
 
 #+BEGIN_SRC R
-otu_tax16 <- 
-  left_join(narrow_otu16, tax16, by="OTU")
+long_otu_tax <- 
+  left_join(long_otu, tax, by="OTU")
 
-otu_tax16 %>%
-  ggplot(aes(x=Location, y=Freq, fill=Class)) + 
-  geom_bar(stat="identity") +
-  theme(axis.text.x = element_text(angle = -90))
+ggplot(long_otu_tax, aes(x=Location, y=Freq, fill=Class)) + 
+    geom_bar(stat="identity") +
+    theme(axis.text.x = element_text(angle = -90))
 #+END_SRC
 
