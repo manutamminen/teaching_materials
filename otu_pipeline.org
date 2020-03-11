@@ -93,6 +93,11 @@ grep -c ">" FILE.fasta
 #+END_SRC
 
 *Less* is an useful command for looking into the content of files.
+
+#+BEGIN_SRC sh
+less FILE.fasta
+#+END_SRC
+
 When viewing a file with less, navigate with the following commands:
 
 - g - go to the beginning of the file
