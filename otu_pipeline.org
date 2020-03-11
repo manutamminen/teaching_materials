@@ -80,7 +80,7 @@ vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.t
 
 *** Useful Unix tricks
 
-Count the number of sequences in a fastq. This employs [[http://manutamminen.info/posts/process_subst/][links]] and [[http://manutamminen.info/posts/awk/][Awk]].
+Count the number of sequences in a fastq. This employs [[http://manutamminen.info/posts/process_subst/][pipes]] and [[http://manutamminen.info/posts/awk/][Awk]].
 
 #+BEGIN_SRC sh
 wc -l FILE.fastq | awk '{print $1/4}'
@@ -92,7 +92,7 @@ Count the number of sequences in a fasta
 grep -c ">" FILE.fasta
 #+END_SRC
 
-**Less** is an useful command for looking into the content of files.
+/Less/ is an useful command for looking into the content of files.
 When viewing a file with less, navigate with the following commands:
 
 - g - go to the beginning of the file
