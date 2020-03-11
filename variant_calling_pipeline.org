@@ -80,6 +80,15 @@ bcftools filter -i'QUAL>10' MEEI01.vcf.gz | bcftools filter -i'QUAL>10' | bcftoo
 
 Combine the filtered VCF file with the annotation in the gff file using a tiny VCF parser written by [[https://github.com/slhogle/UTU_microbial_genomics/blob/master/PART_II.md][Shane Hogle]].
 
+First download the parser
+
+#+BEGIN_SRC sh
+wget https://raw.githubusercontent.com/manutamminen/teaching_materials/master/tinyVCF_parser.py
+#+END_SRC
+
+
+And then combine the annotation to the VCF
+
 #+BEGIN_SRC sh
 python tinyVCF_parser.py EC958.gff MEEI01.filtered.vcf MEEI01.filtered.annotated.vcf
 #+END_SRC
