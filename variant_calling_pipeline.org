@@ -1,0 +1,91 @@
+
+We'll use [[https://jamanetwork.com/journals/jamaophthalmology/fullarticle/2552682][this article]] as the background story.
+
+
+Make the analysis directory
+
+#+BEGIN_SRC sh
+mkdir variant_calling
+cd variant_calling
+#+END_SRC
+
+
+Download the E. coli EC958 reference sequence and annotation: 
+
+#+BEGIN_SRC sh
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/285/655/GCF_000285655.3_EC958.v1/GCF_000285655.3_EC958.v1_genomic.fna.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/285/655/GCF_000285655.3_EC958.v1/GCF_000285655.3_EC958.v1_genomic.gff.gz
+#+END_SRC
+
+
+Download the E. coli MEEI01 sequence data:
+
+https://figshare.com/articles/E_coli_strain_MEEI01_simulated_reads/6291803
+
+
+#+BEGIN_SRC sh
+cp /scratch/project_2002683/ngs-course/*.gz .
+#+END_SRC
+
+
+Unzip and rename these files:
+
+#+BEGIN_SRC sh
+gunzip *.gz
+mv GCF_000285655.3_EC958.v1_genomic.fna EC958.fna
+mv GCF_000285655.3_EC958.v1_genomic.gff EC958.gff
+#+END_SRC
+
+
+
+Enable several bioinformatics tools on the Unix cluster, including Burrows-Wheeler aligner (bwa),
+samtools and bcftools.
+
+#+BEGIN_SRC sh
+module load biokit
+#+END_SRC
+
+
+Prepare and indexed database of the EC958 reference genome.
+
+#+BEGIN_SRC sh
+bwa index EC958.fna
+#+END_SRC
+
+
+Align the resequencing reads on the reference genome.
+
+#+BEGIN_SRC sh
+bwa mem -t 8 EC958.fna NZ_LNAE01000014_R1.fq NZ_LNAE01000014_R2.fq > MEEI01.sam
+#+END_SRC
+
+
+Sort the sam file and prepare a bam file
+
+#+BEGIN_SRC sh
+samtools sort --threads 8 -l 4 -O bam -o MEEI01.bam MEEI01.sam
+#+END_SRC
+
+
+Prepare a vcf file from the bam file
+
+#+BEGIN_SRC sh
+bcftools mpileup -Ou -f EC958.fna MEEI01.bam | bcftools call --ploidy 1 -vcO z -o MEEI01.vcf.gz
+#+END_SRC
+
+
+Filter the vcf file for high-quality variant calls
+
+#+BEGIN_SRC sh
+bcftools filter -i'QUAL>10' MEEI01.vcf.gz | bcftools filter -i'QUAL>10' | bcftools filter -i'DP>50' | bcftools filter -i'IMF > 0.8' -o MEEI01.filtered.vcf
+#+END_SRC
+
+
+Combine the filtered vcf file with the annotation in the gff file using a tiny vcf parser written by [[https://github.com/slhogle/UTU_microbial_genomics/blob/master/PART_II.md][Shane Hogle]].
+
+#+BEGIN_SRC sh
+python tinyVCF_parser.py EC958.gff MEEI01.filtered.vcf MEEI01.filtered.annotated.vcf
+#+END_SRC
+
+
+
