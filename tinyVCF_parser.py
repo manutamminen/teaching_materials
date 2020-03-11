@@ -6,11 +6,11 @@ MYVCF=sys.argv[2]
 MYOUT=sys.argv[3]
 
 with open(MYGFF, 'rb') as csvfile:
-	GFFreader=csv.reader((row for row in csvfile if not row.startswith('#')), delimiter='\t')
+	GFFreader=csv.reader((row for row in csvfile if not row[0]('#')), delimiter='\t')
 	GFFdata = [r for r in GFFreader]
 
 with open(MYVCF, 'rb') as csvfile:
-	VCFreader=csv.reader((row for row in csvfile if not row.startswith('#')), delimiter='\t')
+	VCFreader=csv.reader((row for row in csvfile if not row[0]('#')), delimiter='\t')
 	VCFdata = [r for r in VCFreader]
 
 with open(MYOUT, 'w') as f_out:
