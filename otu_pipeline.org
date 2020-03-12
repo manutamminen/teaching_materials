@@ -10,6 +10,7 @@ Clone the teaching materials directory
 
 #+BEGIN_SRC sh
 git clone https://github.com/manutamminen/teaching_materials
+cd teaching_materials
 #+END_SRC
 
 
