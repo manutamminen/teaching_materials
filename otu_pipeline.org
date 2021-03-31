@@ -2,7 +2,21 @@
 
 #+PROPERTY: header-args :eval never-export
 
-* OTU pipeline example
+* OTU calling pipeline example
+
+** Pipeline in a nutshell
+
+1) FASTQ read merging
+
+2) FASTQ quality filtering
+
+3) Dereplication
+
+4) Read pooling
+
+5) OTU calling
+
+6) OTU annotation
 
 ** On Unix
 
@@ -21,7 +35,7 @@ module load vsearch
 #+END_SRC
 
 
-Process the reads and call the OTUs
+*** Merge, filter and dereplicate the reads
 
 Process example read set 1:
 
@@ -55,21 +69,21 @@ ls example*_R1.fastq | awk -F'_' '{print $1}' | while read file; do vsearch --fa
 ls example*_R1.fastq | awk -F'_' '{print $1}' | while read file; do vsearch --derep_fulllength ${file}.fasta --strand plus --output ${file}_derep.fasta --sizeout --relabel ${file}.; done
 #+END_SRC
 
-Combine the reads from the examples:
+*** Pool the reads
 
 #+BEGIN_SRC sh
 cat *derep.fasta > all.fasta
 #+END_SRC
 
 
-Cluster the reads into OTUs:
+*** Cluster the reads into OTUs:
 
 #+BEGIN_SRC sh
 vsearch --cluster_size all.fasta --id 0.97 --strand plus --relabel OTU_ --centroids all_otus.fasta --otutabout all_otutab.txt
 #+END_SRC
 
 
-Annotate the reads:
+*** Annotate the reads:
 
 #+BEGIN_SRC sh
 wget http://drive5.com/sintax/rdp_16s_v16.fa.gz
