@@ -30,7 +30,7 @@ cd teaching_materials
 #+END_SRC
 
 
-Enable [vsearch](https://github.com/torognes/vsearch) on the Unix cluster
+Enable vsearch (https://github.com/torognes/vsearch) on the Unix cluster
 
 #+BEGIN_SRC sh
 module load vsearch
