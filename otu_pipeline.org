@@ -20,7 +20,7 @@
 
 7) Visualize the results using R programming language
 
-** On an Unix system
+** On a Unix cluster
 
 Clone the teaching materials directory
 
