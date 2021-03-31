@@ -81,7 +81,7 @@ vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.t
 
 *** Useful Unix tricks
 
-Count the number of sequences in a fastq. This employs [[http://manutamminen.info/posts/process_subst/][pipes]] and [[http://manutamminen.info/posts/awk/][Awk]].
+Count the number of sequences in a fastq.
 
 #+BEGIN_SRC sh
 wc -l FILE.fastq | awk '{print $1/4}'
