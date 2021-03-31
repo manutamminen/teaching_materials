@@ -18,7 +18,9 @@
 
 6) OTU annotation
 
-** On Unix
+7) Visualize the results using R programming language
+
+** On an Unix system
 
 Clone the teaching materials directory
 
@@ -76,7 +78,7 @@ cat *derep.fasta > all.fasta
 #+END_SRC
 
 
-*** Cluster the reads into OTUs:
+*** Cluster the reads into OTUs
 
 #+BEGIN_SRC sh
 vsearch --cluster_size all.fasta --id 0.97 --strand plus --relabel OTU_ --centroids all_otus.fasta --otutabout all_otutab.txt
