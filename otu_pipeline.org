@@ -18,7 +18,7 @@
 
 6) OTU annotation
 
-7) Visualize the results using R programming language
+7) Visualizing the results using R programming language
 
 ** On a Unix cluster
 
