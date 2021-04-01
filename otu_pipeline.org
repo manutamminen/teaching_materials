@@ -37,6 +37,42 @@ module load vsearch
 #+END_SRC
 
 
+*** Useful Unix tricks
+
+Count the number of sequences in a fastq.
+
+#+BEGIN_SRC sh
+wc -l FILE.fastq | awk '{print $1/4}'
+#+END_SRC
+
+Count the number of sequences in a fasta.
+
+#+BEGIN_SRC sh
+grep -c ">" FILE.fasta
+#+END_SRC
+
+Print the contents of a file.
+
+#+BEGIN_SRC sh
+cat FILE.fasta
+#+END_SRC
+
+*Less* is an useful command for looking into the content of files.
+
+#+BEGIN_SRC sh
+less FILE.fasta
+#+END_SRC
+
+When viewing a file with less, navigate with the following commands:
+
+- g - go to the beginning of the file
+- G - go to the end of the file
+- q - quit less
+- <space> - scroll down one page
+
+
+
+
 *** Merge, filter and dereplicate the reads
 
 Process example read set 1:
@@ -85,7 +121,7 @@ vsearch --cluster_size all.fasta --id 0.97 --strand plus --relabel OTU_ --centro
 #+END_SRC
 
 
-*** Annotate the reads:
+*** Annotate the reads
 
 #+BEGIN_SRC sh
 wget http://drive5.com/sintax/rdp_16s_v16.fa.gz
@@ -94,33 +130,6 @@ gunzip rdp_16s_v16.fa.gz
 
 vsearch --sintax all_otus.fasta --db rdp_16s_v16.fa --tabbedout all_annotation.txt
 #+END_SRC
-
-*** Useful Unix tricks
-
-Count the number of sequences in a fastq.
-
-#+BEGIN_SRC sh
-wc -l FILE.fastq | awk '{print $1/4}'
-#+END_SRC
-
-Count the number of sequences in a fasta
-
-#+BEGIN_SRC sh
-grep -c ">" FILE.fasta
-#+END_SRC
-
-*Less* is an useful command for looking into the content of files.
-
-#+BEGIN_SRC sh
-less FILE.fasta
-#+END_SRC
-
-When viewing a file with less, navigate with the following commands:
-
-- g - go to the beginning of the file
-- G - go to the end of the file
-- q - quit less
-- <space> - scroll down one page
 
 ** On R
 
