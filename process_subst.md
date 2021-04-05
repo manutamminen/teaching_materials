@@ -103,4 +103,4 @@ could do many other modifications to both the sequence and id parts, or
 convert the file into some entirely different format. There are other
 standard Unix tools that provide more neat text manipulation tricks and
 what I find especially useful is a little programming language called
-Awk. But that's another story!
+Awk. But that's [another story](https://github.com/manutamminen/teaching_materials/blob/master/awk.md)!
