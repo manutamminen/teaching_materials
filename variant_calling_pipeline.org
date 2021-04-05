@@ -18,10 +18,11 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/285/655/GCF_000285655.3_EC95
 #+END_SRC
 
 
-Copy the E. coli MEEI01 sequence data:
+Download the E. coli MEEI01 re-sequencing data:
 
 #+BEGIN_SRC sh
-cp /scratch/project_2002683/ngs-course/*.gz .
+wget https://zenodo.org/api/files/de95e987-009b-44d6-94e5-66408759a59e/NZ_LNAE01000014_R1.fq.gz
+wget https://zenodo.org/api/files/de95e987-009b-44d6-94e5-66408759a59e/NZ_LNAE01000014_R2.fq.gz
 #+END_SRC
 
 
