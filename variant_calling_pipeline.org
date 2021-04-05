@@ -1,6 +1,22 @@
+# -*- org-export-babel-evaluate: nil -*-
+
+#+PROPERTY: header-args :eval never-export
+
+* Variant calling pipeline example
+
+** Pipeline in a nutshell
+
+1) Burrows-Wheeler alignment of Fastq files
+
+2) SAM to BAM file conversion
+
+3) BAM to VCF (variant calline file) conversion
+
+4) Integration of VCF with GFF3 annotation file
 
 We'll use [[https://jamanetwork.com/journals/jamaophthalmology/fullarticle/2552682][this article]] as the background story.
 
+** On a Unix cluster
 
 Make the analysis directory
 
