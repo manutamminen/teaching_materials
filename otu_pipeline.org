@@ -30,7 +30,7 @@ cd teaching_materials
 #+END_SRC
 
 
-Enable [[vsearch][https://github.com/torognes/vsearch]] on the Unix cluster
+Enable [[https://github.com/torognes/vsearch][vsearch]] on the Unix cluster
 
 #+BEGIN_SRC sh
 module load vsearch
@@ -70,8 +70,7 @@ When viewing a file with less, navigate with the following commands:
 - q - quit less
 - <space> - scroll down one page
 
-For more useful stuff, have a look in my [[other materials][https://github.com/manutamminen/teaching_materials/blob/master/process_subst.md]]!
-
+For more useful stuff, have a look at my other Unix teaching materials [[https://github.com/manutamminen/teaching_materials/blob/master/process_subst.md][here]]!
 
 *** Merge, filter and dereplicate the reads
 
