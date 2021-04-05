@@ -1,12 +1,5 @@
----
-title: "Unix tricks for bioinformagicians"
-date: 2018-03-30T13:00:43+03:00
-lastmod: 2019-09-30T23:00:01+03:00
----
-
-
-I use these Unix one-liners and such all the time in my bioinformatic work. I hope you'll find then useful as well!
-</br>
+Unix tricks for bioinformagicians
+---------------------------------
 
 Reverse complement all sequences in a fasta file.
 
