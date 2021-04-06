@@ -28,8 +28,8 @@ cd /scratch/project_2002149
 Make the analysis directory
 
 #+BEGIN_SRC sh
-mkdir variant_calling
-cd variant_calling
+mkdir NAME
+cd NAME
 #+END_SRC
 
 
