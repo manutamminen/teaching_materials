@@ -90,7 +90,7 @@ samtools sort --threads 8 -l 4 -O bam -o MEEI01.bam MEEI01.sam
 Prepare a VCF file from the BAM file
 
 #+BEGIN_SRC sh
-bcftools mpileup -d 1000 -Ou -f EC958.fna MEEI01.bam | bcftools call --ploidy 1 -vcO z -o MEEI01.vcf.gz
+bcftools mpileup -Ou -f EC958.fna MEEI01.bam | bcftools call --ploidy 1 -vcO z -o MEEI01.vcf.gz
 #+END_SRC
 
 
