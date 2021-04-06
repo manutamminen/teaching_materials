@@ -52,9 +52,9 @@ wget https://zenodo.org/api/files/de95e987-009b-44d6-94e5-66408759a59e/NZ_LNAE01
 Unzip and rename the sequence files.
 
 #+BEGIN_SRC sh
-gunzip *.gz
-mv GCF_000285655.3_EC958.v1_genomic.fna EC958.fna
-mv GCF_000285655.3_EC958.v1_genomic.gff EC958.gff
+zcat GCF_000285655.3_EC958.v1_genomic.fna.gz > EC958.fna
+zcat GCF_000285655.3_EC958.v1_genomic.gff.gz > EC958.gff
+
 #+END_SRC
 
 
