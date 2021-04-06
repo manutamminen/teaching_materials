@@ -18,6 +18,12 @@ We'll use [[https://jamanetwork.com/journals/jamaophthalmology/fullarticle/25526
 
 ** On a Unix cluster
 
+Schedule an interactive session on a processing core.
+
+#+BEGIN_SRC sh
+sinteractive --account project_2002149 --mem 64000 --tmp 100
+#+END_SRC
+
 Make the analysis directory
 
 #+BEGIN_SRC sh
@@ -26,7 +32,7 @@ cd variant_calling
 #+END_SRC
 
 
-Download the E. coli EC958 reference sequence and annotation: 
+Download the E. coli EC958 reference sequence and annotation.
 
 #+BEGIN_SRC sh
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/285/655/GCF_000285655.3_EC958.v1/GCF_000285655.3_EC958.v1_genomic.fna.gz
@@ -34,7 +40,7 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/285/655/GCF_000285655.3_EC95
 #+END_SRC
 
 
-Download the E. coli MEEI01 re-sequencing data:
+Download the E. coli MEEI01 re-sequencing data.
 
 #+BEGIN_SRC sh
 wget https://zenodo.org/api/files/de95e987-009b-44d6-94e5-66408759a59e/NZ_LNAE01000014_R1.fq.gz
@@ -42,7 +48,7 @@ wget https://zenodo.org/api/files/de95e987-009b-44d6-94e5-66408759a59e/NZ_LNAE01
 #+END_SRC
 
 
-Unzip and rename the sequence files:
+Unzip and rename the sequence files.
 
 #+BEGIN_SRC sh
 gunzip *.gz
@@ -84,14 +90,14 @@ samtools sort --threads 8 -l 4 -O bam -o MEEI01.bam MEEI01.sam
 Prepare a VCF file from the BAM file
 
 #+BEGIN_SRC sh
-bcftools mpileup -Ou -f EC958.fna MEEI01.bam | bcftools call --ploidy 1 -vcO z -o MEEI01.vcf.gz
+bcftools mpileup -d 1000 -Ou -f EC958.fna MEEI01.bam | bcftools call --ploidy 1 -vcO z -o MEEI01.vcf.gz
 #+END_SRC
 
 
 Filter the VCF file for high-quality variant calls
 
 #+BEGIN_SRC sh
-bcftools filter -i'QUAL>10' MEEI01.vcf.gz | bcftools filter -i'QUAL>10' | bcftools filter -i'DP>50' | bcftools filter -i'IMF > 0.8' -o MEEI01.filtered.vcf
+bcftools filter -i'QUAL>10' MEEI01.vcf.gz | bcftools filter -i'DP>50' | bcftools filter -i'IMF > 0.8' -o MEEI01.filtered.vcf
 #+END_SRC
 
 
@@ -104,7 +110,7 @@ wget https://raw.githubusercontent.com/manutamminen/teaching_materials/master/ti
 #+END_SRC
 
 
-And then combine the annotation to the VCF
+And then combine the annotation to the VCF.
 
 #+BEGIN_SRC sh
 python tinyVCF_parser.py EC958.gff MEEI01.filtered.vcf MEEI01.filtered.annotated.vcf
